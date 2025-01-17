@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios'); // For making external API calls
@@ -15,12 +16,27 @@ app.use(express.json());
 // Weather API Proxy Route
 app.get('/weather', async (req, res) => {
     const city = req.query.city || 'London';
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.OPENWEATHERMAP_API_KEY}`;
+    
     try {
         const response = await axios.get(url);
+
+        if (response.data.cod && response.data.cod !== 200) {
+            // Handle errors returned by OpenWeatherMap
+            return res.status(response.data.cod).json({ error: response.data.message });
+        }
+
         res.json(response.data);
     } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch weather data' });
+        console.error('Error fetching weather data:', error.message);
+
+        if (error.response) {
+            // API returned an error response
+            res.status(error.response.status).json({ error: error.response.data.message });
+        } else {
+            // Network or other errors
+            res.status(500).json({ error: 'Internal server error' });
+        }
     }
 });
 
