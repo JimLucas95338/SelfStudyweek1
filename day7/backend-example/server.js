@@ -4,7 +4,7 @@ const axios = require('axios'); // For making external API calls
 const app = express();
 const PORT = 3000;
 
-const API_KEY = '0d95e397fe5094b3c16e20348d5b7358';
+const API_KEY = process.env.OPENWEATHERMAP_API_KEY;
 
 // Enable CORS for all routes
 app.use(cors());
