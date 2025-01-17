@@ -3,6 +3,9 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -12,7 +15,7 @@ header {
     text-align: center;
 }
 
-header nav  a{
+header nav a {
     color: white;
     margin: 0 15px;
     text-decoration: none;
@@ -24,11 +27,25 @@ header nav a:hover {
 }
 
 main {
+    flex: 1; /* Ensures main takes up remaining space */
     padding: 20px;
 }
 
 section {
     margin-bottom: 20px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+section:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+section:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+section:nth-child(3) {
+    animation-delay: 0.6s;
 }
 
 form input {
@@ -45,21 +62,50 @@ form button {
     border: none;
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
 form button:hover {
     background-color: #555;
 }
 
+button#getWeather {
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+button#getWeather:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button#getWeather:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+button#getWeather:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
 
 footer {
     text-align: center;
     background: #333;
     color: white;
     padding: 10px 0;
-    position: fixed;
+    /* Position footer dynamically to stay at bottom */
+    margin-top: auto;
     width: 100%;
-    bottom: 0;
 }
 
 @media (max-width: 768px) {
@@ -74,15 +120,24 @@ footer {
         flex-direction: column;
         align-items: center;
     }
-}
 
+    #about {
+        margin: 20px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        line-height: 1.6;
+    }
+    
+    #about h2, #about h3 {
+        color: #333;
+        margin-bottom: 10px;
+    }
+    
+    #about p, #about ul {
+        margin: 10px 0;
+    }
 
-#weatherResult.error {
-    color: red;
-}
-
-
-@media (max-width: 768px) {
     #weather {
         text-align: center;
     }
@@ -91,6 +146,10 @@ footer {
         width: 100%;
         margin: 5px 0;
     }
+}
+
+#weatherResult.error {
+    color: red;
 }
 
 .spinner {
@@ -102,4 +161,85 @@ footer {
     animation: spin 1s linear infinite;
     display: inline-block;
     margin-left: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #00aaff;
+    text-decoration: underline;
+}
+
+#weather {
+    text-align: center;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 400px;
+    background-color: #8f8f8f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#weather h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+#weather input {
+    padding: 8px;
+    width: 60%;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#weather button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#weather button:hover {
+    background-color: #0056b3;
+}
+
+#weatherIcon {
+    font-size: 50px;
+    color: #ffcc00; /* Default sunny yellow */
+    display: none;
+}
+
+.sunny {
+    color: orange;
+}
+
+.rainy {
+    color: blue;
+}
+
+.cloudy {
+    color: gray;
+}
+
+.snowy {
+    color: lightblue;
 }

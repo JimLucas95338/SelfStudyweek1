@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My Profile</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
         <header>
@@ -20,42 +21,80 @@
                 <h2>Weather Widget</h2>
                 <input id="city" type="text" placeholder="Enter city">
                 <button id="getWeather">Get Weather</button>
+                <button id="useLocation">Use My Location</button>
+                <p id="weatherMessage"></p>
                 <p id="weatherResult"></p>
-                <img id="weatherIcon" alt="Weather Icon" style="display: none;">
+                <i id="weatherIcon" class="fas" style="font-size: 50px; display: none;"></i>
             </section>
+
             <section id="about">
                 <h2>About Me</h2>
-                <p>Hello! I am a developer passionate about learning full-stack development.</p>
+                <p>
+                    Hi there! I'm <strong>James (Jim) Lucas</strong>, a Senior Product Manager transitioning into the world of software development.
+                    With over a decade of experience in the biotechnology industry, I bring a unique blend of
+                    <strong>product development expertise</strong>, <strong>AI/ML proficiency</strong>, and
+                    <strong>cross-functional team leadership</strong> to my projects.
+                </p>
+                <h3>Contact Information:</h3>
+                <ul>
+                    <li><strong>Name:</strong> James (Jim) Lucas</li>
+                    <li><strong>Location:</strong> Mariposa, United States</li>
+                    <li><strong>Phone:</strong> +1 650-580-1859</li>
+                    <li><strong>Email:</strong> <a href="mailto:jiml95338@gmail.com">jiml95338@gmail.com</a></li>
+                </ul>
+                <h3>Professional Summary:</h3>
+                <p>
+                    I'm James (Jim) Lucas, a seasoned product manager transitioning into software development. With over a decade of experience
+                    in biotechnology, I bring expertise in <strong>product development</strong>, <strong>AI/ML</strong>, and
+                    <strong>cross-functional leadership</strong>.
+                </p>
+                <h3>Skills:</h3>
+                <ul>
+                    <li>Product Development</li>
+                    <li>Python</li>
+                    <li>AI/ML</li>
+                    <li>Agile Methodologies</li>
+                    <li>Cross-Functional Leadership</li>
+                    <li>HTML</li>
+                    <li>JavaScript</li>
+                    <li>Cybersecurity</li>
+                </ul>
+                <h3>Certifications:</h3>
+                <ul>
+                    <li>IBM Data Science Specialization</li>
+                    <li>Front End Web Development</li>
+                    <li>Designing RESTful APIs</li>
+                </ul>
             </section>
+
             <section id="projects">
                 <h2>Projects</h2>
                 <ul>
                     <li>Project 1: Calculator</li>
                         <ul>
-                            <li>Simple calculator Adds or Subtracts user inputted numbers </li>
+                            <li>Simple calculator Adds or Subtracts user inputted numbers</li>
                             <a href="../day2/calculator.html">Try it Out</a>
                         </ul>
-
                     <li>Project 2: To-Do List</li>
                     <li>Project 3: Weather</li>
-
-                </ul>  
+                </ul>
             </section>
+
             <section id="contact">
                 <h2>Contact</h2>
                 <form id="contactForm">
-                    <label form="name">Name:</label>
+                    <label for="name">Name:</label>
                     <input type="text" id="name" placeholder="Your Name">
-                    <label form="email">Email:</label>
+                    <label for="email">Email:</label>
                     <input type="email" id="email" placeholder="Your Email">
                     <button type="submit">Send</button>
                 </form>
                 <p id="message" style="color: green; display: none;"></p>
             </section>
-            <script src="../day4/script.js"></script>
         </main>
         <footer>
             <p>© 2025 My Profile. All rights reserved.</p>
         </footer>
+        <script src="../day4/script.js"></script>
     </body>
 </html>
